@@ -1,184 +1,251 @@
-import * as React from "react"
+import React from 'react';
+// import Img from 'gatsby-image';
+import styled from 'styled-components';
+import {
+	GrInstagram as InstagramIcon,
+	GrMail as MailIcon,
+} from 'react-icons/gr';
+// import { VscChromeClose as CloseIcon } from 'react-icons/vsc';
+import Layout from '../components/layout';
+import { colors, fonts } from '../constants';
+import StackedMain from '../images/kategorize-stacked-main.png';
+import BrightIdeas from '../images/bright-ideas.png';
 
 // styles
-const pageStyles = {
-  color: "#232129",
-  padding: 96,
-  fontFamily: "-apple-system, Roboto, sans-serif, serif",
-}
-const headingStyles = {
-  marginTop: 0,
-  marginBottom: 64,
-  maxWidth: 320,
-}
-const headingAccentStyles = {
-  color: "#663399",
-}
-const paragraphStyles = {
-  marginBottom: 48,
-}
-const codeStyles = {
-  color: "#8A6534",
-  padding: 4,
-  backgroundColor: "#FFF4DB",
-  fontSize: "1.25rem",
-  borderRadius: 4,
-}
-const listStyles = {
-  marginBottom: 96,
-  paddingLeft: 0,
-}
-const listItemStyles = {
-  fontWeight: 300,
-  fontSize: 24,
-  maxWidth: 560,
-  marginBottom: 30,
-}
+const NavWrapper = styled.nav`
+	display: flex;
+	justify-content: space-between;
+	margin: 0 24px;
+	font-size: 1.5rem;
+	font-weight: 500;
+`;
 
-const linkStyle = {
-  color: "#8954A8",
-  fontWeight: "bold",
-  fontSize: 16,
-  verticalAlign: "5%",
-}
+const MenuWrapper = styled.ul`
+	display: flex;
+	list-style: none;
+	margin: 0;
+	li {
+		margin: 5px 0 0 10px;
+	}
+	/* .mobile-nav-menu {
+		position: absolute;
+		top: 0;
+		left: 110vw;
+		height: 100vh;
+		width: 100vw;
+		background: #f0eece;
+		&.active {
+			left: 0;
+		}
+	}
+	.desktop-nav-item {
+		@media only screen and (max-width: 800px) {
+			display: none;
+		}
+		margin: 5px;
+	}
+	.burger {
+		@media only screen and (min-width: 801px) {
+			display: none;
+		}
+		:hover {
+			cursor: pointer;
+		}
+	} */
+`;
 
-const docLinkStyle = {
-  ...linkStyle,
-  listStyleType: "none",
-  marginBottom: 24,
-}
+const ContactButton = styled.a`
+	font-family: ${fonts.roboto};
+	padding: 14px;
+	border: 2px solid ${colors.orange};
+	:hover {
+		background-color: ${colors.orange};
+		color: #fff;
+	}
+`;
 
-const descriptionStyle = {
-  color: "#232129",
-  fontSize: 14,
-  marginTop: 10,
-  marginBottom: 0,
-  lineHeight: 1.25,
-}
+const ContentWrapper = styled.main`
+	display: flex;
+	color: '#232129';
+	padding: 96px;
+	.info {
+		padding: 0;
+	}
+	@media only screen and (max-width: 1060px) {
+		padding: 96px 48px;
+	}
+	@media only screen and (max-width: 800px) {
+		display: block;
+		padding: 32px;
+		.info {
+			text-align: center;
+			div {
+				width: 90%;
+			}
+		}
+	}
+`;
 
-const docLink = {
-  text: "Documentation",
-  url: "https://www.gatsbyjs.com/docs/",
-  color: "#8954A8",
-}
+const ColumnWrapper = styled.div`
+	width: 50%;
+	div {
+		padding: 17px;
+	}
+	@media only screen and (max-width: 800px) {
+		width: 100%;
+	}
+	img {
+		max-width: 520px;
+	}
+`;
 
-const badgeStyle = {
-  color: "#fff",
-  backgroundColor: "#088413",
-  border: "1px solid #088413",
-  fontSize: 11,
-  fontWeight: "bold",
-  letterSpacing: 1,
-  borderRadius: 4,
-  padding: "4px 6px",
-  display: "inline-block",
-  position: "relative",
-  top: -2,
-  marginLeft: 10,
-  lineHeight: 1,
-}
+const HeadingStyles = styled.h1`
+	margin-top: 0;
+	margin-bottom: 64;
+	max-width: 320;
+	font-size: 1.5rem;
+`;
 
-// data
-const links = [
-  {
-    text: "Tutorial",
-    url: "https://www.gatsbyjs.com/docs/tutorial/",
-    description:
-      "A great place to get started if you're new to web development. Designed to guide you through setting up your first Gatsby site.",
-    color: "#E95800",
-  },
-  {
-    text: "How to Guides",
-    url: "https://www.gatsbyjs.com/docs/how-to/",
-    description:
-      "Practical step-by-step guides to help you achieve a specific goal. Most useful when you're trying to get something done.",
-    color: "#1099A8",
-  },
-  {
-    text: "Reference Guides",
-    url: "https://www.gatsbyjs.com/docs/reference/",
-    description:
-      "Nitty-gritty technical descriptions of how Gatsby works. Most useful when you need detailed information about Gatsby's APIs.",
-    color: "#BC027F",
-  },
-  {
-    text: "Conceptual Guides",
-    url: "https://www.gatsbyjs.com/docs/conceptual/",
-    description:
-      "Big-picture explanations of higher-level Gatsby concepts. Most useful for building understanding of a particular topic.",
-    color: "#0D96F2",
-  },
-  {
-    text: "Plugin Library",
-    url: "https://www.gatsbyjs.com/plugins",
-    description:
-      "Add functionality and customize your Gatsby site or app with thousands of plugins built by our amazing developer community.",
-    color: "#8EB814",
-  },
-  {
-    text: "Build and Host",
-    url: "https://www.gatsbyjs.com/cloud",
-    badge: true,
-    description:
-      "Now you’re ready to show the world! Give your Gatsby site superpowers: Build and host on Gatsby Cloud. Get started for free!",
-    color: "#663399",
-  },
-]
+const ListStyles = styled.ul`
+	display: block;
+	margin-block-start: 1em;
+	margin-block-end: 1em;
+	margin-inline-start: 0px;
+	margin-inline-end: 0px;
+	padding-inline-start: 40px;
+	@media only screen and (max-width: 375px) {
+		padding-inline-start: 20px;
+	}
+`;
+
+// const HamburgerRow = styled.div`
+// 	height: 3px;
+// 	width: 50px;
+// 	background-color: ${colors.orange};
+// 	margin-bottom: 10px;
+// `;
 
 // markup
 const IndexPage = () => {
-  return (
-    <main style={pageStyles}>
-      <title>Home Page</title>
-      <h1 style={headingStyles}>
-        Congratulations
-        <br />
-        <span style={headingAccentStyles}>— you just made a Gatsby site! </span>
-        <span role="img" aria-label="Party popper emojis">
-          🎉🎉🎉
-        </span>
-      </h1>
-      <p style={paragraphStyles}>
-        Edit <code style={codeStyles}>src/pages/index.js</code> to see this page
-        update in real-time.{" "}
-        <span role="img" aria-label="Sunglasses smiley emoji">
-          😎
-        </span>
-      </p>
-      <ul style={listStyles}>
-        <li style={docLinkStyle}>
-          <a
-            style={linkStyle}
-            href={`${docLink.url}?utm_source=starter&utm_medium=start-page&utm_campaign=minimal-starter`}
-          >
-            {docLink.text}
-          </a>
-        </li>
-        {links.map(link => (
-          <li key={link.url} style={{ ...listItemStyles, color: link.color }}>
-            <span>
-              <a
-                style={linkStyle}
-                href={`${link.url}?utm_source=starter&utm_medium=start-page&utm_campaign=minimal-starter`}
-              >
-                {link.text}
-              </a>
-              {link.badge && (
-                <span style={badgeStyle} aria-label="New Badge">
-                  NEW!
-                </span>
-              )}
-              <p style={descriptionStyle}>{link.description}</p>
-            </span>
-          </li>
-        ))}
-      </ul>
-      <img
-        alt="Gatsby G Logo"
-        src="data:image/svg+xml,%3Csvg width='24' height='24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 2a10 10 0 110 20 10 10 0 010-20zm0 2c-3.73 0-6.86 2.55-7.75 6L14 19.75c3.45-.89 6-4.02 6-7.75h-5.25v1.5h3.45a6.37 6.37 0 01-3.89 4.44L6.06 9.69C7 7.31 9.3 5.63 12 5.63c2.13 0 4 1.04 5.18 2.65l1.23-1.06A7.959 7.959 0 0012 4zm-8 8a8 8 0 008 8c.04 0 .09 0-8-8z' fill='%23639'/%3E%3C/svg%3E"
-      />
-    </main>
-  )
-}
+	// const [active, setActive] = useState(false);
+	// const HamburgerIcon = () => (
+	// 	<div
+	// 		className='burger'
+	// 		onClick={() => {
+	// 			setActive(true);
+	// 		}}
+	// 	>
+	// 		<HamburgerRow />
+	// 		<HamburgerRow />
+	// 		<HamburgerRow />
+	// 	</div>
+	// );
+	return (
+		<Layout>
+			<NavWrapper>
+				<a href='/'>kategorize</a>
+				<MenuWrapper>
+					{/* <HamburgerIcon /> */}
+					<li className='desktop-nav-item'>
+						<a href='https://www.instagram.com/kategorize.co'>
+							<InstagramIcon color={colors.orange} />
+						</a>
+					</li>
+					<li className='desktop-nav-item'>
+						<a href='mailto:info@kategorize.co'>
+							<MailIcon color={colors.orange} />
+						</a>
+					</li>
+					{/* <div className={`mobile-nav-menu ${active && 'active'}`}>
+						<CloseIcon
+							size={32}
+							color={'#838f56'}
+							onClick={() => setActive(false)}
+						/>
+						<li className='mobile-nav-item'>
+							<a href='https://www.instagram.com/kategorize.co'>
+								<InstagramIcon color={'#838f56'} />
+							</a>
+						</li>
+						<li className='desktop-nav-item'>
+							<a href='mailto:info@kategorize.co'>
+								<MailIcon color={'#838f56'} />
+							</a>
+						</li>
+					</div> */}
+				</MenuWrapper>
+			</NavWrapper>
+			<title>kategorize</title>
+			<ContentWrapper>
+				<ColumnWrapper>
+					<img
+						width='100%'
+						src={StackedMain}
+						alt='Kategorize Stacked Main Logo'
+					/>
+					<img
+						width='100%'
+						src={BrightIdeas}
+						alt='Kategorize Stacked Main Logo'
+					/>
+				</ColumnWrapper>
+				<ColumnWrapper>
+					<div>
+						<HeadingStyles>
+							Hi, I’m Kat & I’m here to help you with:
+						</HeadingStyles>
+						<ListStyles>
+							<li>
+								<p>
+									organizing any room, corner, cabinet, or closet in your home
+								</p>
+							</li>
+							<li>
+								<p>
+									going through paperwork, clothes, belongings, old boxes, or
+									food
+								</p>
+							</li>
+							<li>
+								<p>organizing digital files</p>
+							</li>
+							<li>
+								<p>moving - do you want to get rid of stuff before you pack?</p>
+							</li>
+							<li>
+								<p>
+									unpacking - are you trying to figure out where to put things?
+								</p>
+							</li>
+							<li>
+								<p>
+									going through paperwork or belongings of a loved one that has
+									passed away
+								</p>
+							</li>
+						</ListStyles>
+					</div>
+					<div style={{ textAlign: 'center' }}>
+						<ContactButton href='mailto:info@kategorize.co'>
+							Let's chat!
+						</ContactButton>
+					</div>
+					<ContentWrapper>
+						<ColumnWrapper className='info'>
+							<h4>Location</h4>
+							<p>New York City and Southern California</p>
+						</ColumnWrapper>
+						<ColumnWrapper className='info'>
+							<h4>Contact</h4>
+							<a href='mailto:info@kategorize.co'>
+								<p>info@kategorize.co</p>
+							</a>
+						</ColumnWrapper>
+					</ContentWrapper>
+				</ColumnWrapper>
+			</ContentWrapper>
+		</Layout>
+	);
+};
 
-export default IndexPage
+export default IndexPage;
