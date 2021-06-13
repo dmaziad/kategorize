@@ -57,16 +57,16 @@ const MenuWrapper = styled.ul`
 const ContactButton = styled.a`
 	font-family: ${fonts.roboto};
 	padding: 14px;
-	border: 2px solid ${colors.orange};
+	border: 2px solid ${colors.salmon};
 	:hover {
-		background-color: ${colors.orange};
-		color: #fff;
+		background-color: ${colors.salmon};
+		color: ${colors.white};
 	}
 `;
 
 const ContentWrapper = styled.main`
 	display: flex;
-	color: '#232129';
+	color: ${colors.black};
 	padding: 96px;
 	.info {
 		padding: 0;
@@ -77,8 +77,8 @@ const ContentWrapper = styled.main`
 	@media only screen and (max-width: 800px) {
 		display: block;
 		padding: 32px;
+		text-align: center;
 		.info {
-			text-align: center;
 			div {
 				width: 90%;
 			}
@@ -104,6 +104,7 @@ const HeadingStyles = styled.h1`
 	margin-bottom: 64;
 	max-width: 320;
 	font-size: 1.5rem;
+	text-align: left;
 `;
 
 const ListStyles = styled.ul`
@@ -113,6 +114,7 @@ const ListStyles = styled.ul`
 	margin-inline-start: 0px;
 	margin-inline-end: 0px;
 	padding-inline-start: 40px;
+	text-align: left;
 	@media only screen and (max-width: 375px) {
 		padding-inline-start: 20px;
 	}
@@ -121,7 +123,7 @@ const ListStyles = styled.ul`
 // const HamburgerRow = styled.div`
 // 	height: 3px;
 // 	width: 50px;
-// 	background-color: ${colors.orange};
+// 	background-color: ${colors.salmon};
 // 	margin-bottom: 10px;
 // `;
 
@@ -143,17 +145,22 @@ const IndexPage = () => {
 	return (
 		<Layout>
 			<NavWrapper>
-				<a href='/'>kategorize</a>
+				<a href='/' aria-label='Home'>
+					kategorize
+				</a>
 				<MenuWrapper>
 					{/* <HamburgerIcon /> */}
 					<li className='desktop-nav-item'>
-						<a href='https://www.instagram.com/kategorize.co'>
-							<InstagramIcon color={colors.orange} />
+						<a
+							href='https://www.instagram.com/kategorize.co'
+							aria-label='Instagram'
+						>
+							<InstagramIcon />
 						</a>
 					</li>
 					<li className='desktop-nav-item'>
-						<a href='mailto:info@kategorize.co'>
-							<MailIcon color={colors.orange} />
+						<a href='mailto:info@kategorize.co' aria-label='Email'>
+							<MailIcon />
 						</a>
 					</li>
 					{/* <div className={`mobile-nav-menu ${active && 'active'}`}>
@@ -175,7 +182,6 @@ const IndexPage = () => {
 					</div> */}
 				</MenuWrapper>
 			</NavWrapper>
-			<title>kategorize</title>
 			<ContentWrapper>
 				<ColumnWrapper>
 					<img
@@ -192,7 +198,7 @@ const IndexPage = () => {
 				<ColumnWrapper>
 					<div>
 						<HeadingStyles>
-							Hi, I’m Kat & I’m here to help you with:
+							Hi, I’m Kat &amp; I’m here to help you with:
 						</HeadingStyles>
 						<ListStyles>
 							<li>
@@ -226,7 +232,7 @@ const IndexPage = () => {
 						</ListStyles>
 					</div>
 					<div style={{ textAlign: 'center' }}>
-						<ContactButton href='mailto:info@kategorize.co'>
+						<ContactButton href='mailto:info@kategorize.co' aria-label='Email'>
 							Let's chat!
 						</ContactButton>
 					</div>
@@ -237,7 +243,7 @@ const IndexPage = () => {
 						</ColumnWrapper>
 						<ColumnWrapper className='info'>
 							<h4>Contact</h4>
-							<a href='mailto:info@kategorize.co'>
+							<a href='mailto:info@kategorize.co' aria-label='Email'>
 								<p>info@kategorize.co</p>
 							</a>
 						</ColumnWrapper>

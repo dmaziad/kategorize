@@ -1,6 +1,10 @@
 module.exports = {
 	siteMetadata: {
 		title: 'Kategorize',
+		description:
+			'Professional Organizer in New York City and Southern California.',
+		url: 'https://www.kategorize.co', // No trailing slash allowed!
+		image: '/kategorize-stacked-main-b0dd49635422d9a7464ce9f0146640d4.png', // Path to your image you placed in the 'static' folder
 	},
 	plugins: [
 		'gatsby-plugin-gatsby-cloud',
