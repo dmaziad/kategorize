@@ -239,7 +239,7 @@ const IndexPage = () => {
 					<ContentWrapper>
 						<ColumnWrapper className='info'>
 							<h4>Location</h4>
-							<p>New York City and Southern California</p>
+							<p>Living in New York City but loves to travel.</p>
 						</ColumnWrapper>
 						<ColumnWrapper className='info'>
 							<h4>Contact</h4>
