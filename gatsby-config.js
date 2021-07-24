@@ -32,5 +32,13 @@ module.exports = {
 			},
 			__key: 'images',
 		},
+		{
+			resolve: `gatsby-plugin-google-gtag`,
+			options: {
+				trackingIds: [
+					env.GOOGLE_ANALYTICS_ID, // Google Analytics / GA
+				],
+			},
+		},
 	],
 };
