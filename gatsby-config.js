@@ -1,3 +1,7 @@
+require('dotenv').config({
+	path: `.env.${process.env.NODE_ENV}`,
+});
+
 module.exports = {
 	siteMetadata: {
 		title: 'Kategorize',
@@ -36,7 +40,7 @@ module.exports = {
 			resolve: `gatsby-plugin-google-gtag`,
 			options: {
 				trackingIds: [
-					env.GOOGLE_ANALYTICS_ID, // Google Analytics / GA
+					process.env.GOOGLE_ANALYTICS_ID, // Google Analytics / GA
 				],
 			},
 		},
