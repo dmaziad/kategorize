@@ -1,11 +1,9 @@
 import React from 'react';
-// import Img from 'gatsby-image';
 import styled from 'styled-components';
 import {
 	GrInstagram as InstagramIcon,
 	GrMail as MailIcon,
 } from 'react-icons/gr';
-// import { VscChromeClose as CloseIcon } from 'react-icons/vsc';
 import Layout from '../components/layout';
 import { colors, fonts } from '../constants';
 import StackedMain from '../images/kategorize-stacked-main.png';
@@ -27,31 +25,6 @@ const MenuWrapper = styled.ul`
 	li {
 		margin: 5px 0 0 10px;
 	}
-	/* .mobile-nav-menu {
-		position: absolute;
-		top: 0;
-		left: 110vw;
-		height: 100vh;
-		width: 100vw;
-		background: #f0eece;
-		&.active {
-			left: 0;
-		}
-	}
-	.desktop-nav-item {
-		@media only screen and (max-width: 800px) {
-			display: none;
-		}
-		margin: 5px;
-	}
-	.burger {
-		@media only screen and (min-width: 801px) {
-			display: none;
-		}
-		:hover {
-			cursor: pointer;
-		}
-	} */
 `;
 
 const ContactButton = styled.a`
@@ -69,7 +42,7 @@ const ContentWrapper = styled.main`
 	color: ${colors.black};
 	padding: 96px;
 	.info {
-		padding: 0;
+		padding: 0 5px 0 0;
 	}
 	@media only screen and (max-width: 1060px) {
 		padding: 96px 48px;
@@ -120,28 +93,7 @@ const ListStyles = styled.ul`
 	}
 `;
 
-// const HamburgerRow = styled.div`
-// 	height: 3px;
-// 	width: 50px;
-// 	background-color: ${colors.salmon};
-// 	margin-bottom: 10px;
-// `;
-
-// markup
 const IndexPage = () => {
-	// const [active, setActive] = useState(false);
-	// const HamburgerIcon = () => (
-	// 	<div
-	// 		className='burger'
-	// 		onClick={() => {
-	// 			setActive(true);
-	// 		}}
-	// 	>
-	// 		<HamburgerRow />
-	// 		<HamburgerRow />
-	// 		<HamburgerRow />
-	// 	</div>
-	// );
 	return (
 		<Layout>
 			<NavWrapper>
@@ -149,7 +101,6 @@ const IndexPage = () => {
 					kategorize
 				</a>
 				<MenuWrapper>
-					{/* <HamburgerIcon /> */}
 					<li className='desktop-nav-item'>
 						<a
 							href='https://www.instagram.com/kategorize.co'
@@ -163,23 +114,6 @@ const IndexPage = () => {
 							<MailIcon />
 						</a>
 					</li>
-					{/* <div className={`mobile-nav-menu ${active && 'active'}`}>
-						<CloseIcon
-							size={32}
-							color={'#838f56'}
-							onClick={() => setActive(false)}
-						/>
-						<li className='mobile-nav-item'>
-							<a href='https://www.instagram.com/kategorize.co'>
-								<InstagramIcon color={'#838f56'} />
-							</a>
-						</li>
-						<li className='desktop-nav-item'>
-							<a href='mailto:info@kategorize.co'>
-								<MailIcon color={'#838f56'} />
-							</a>
-						</li>
-					</div> */}
 				</MenuWrapper>
 			</NavWrapper>
 			<ContentWrapper>
